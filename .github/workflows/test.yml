@@ -1,11 +1,12 @@
-name: run-unit-tests
+name: automated-jobs
 on: push
 jobs:
-  my-job:
+  run-unit-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: run-truffle-tests
         run: |
           ls
+          npm install
           npx truffle test
