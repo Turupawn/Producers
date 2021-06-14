@@ -1,8 +1,11 @@
 name: run-unit-tests
 on: push
 jobs:
-  my-job:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: run-truffle-tests
-        run: truffle test
+      - uses: actions/checkout@v2
+      - run: |
+          ls
+          npx truffle test
