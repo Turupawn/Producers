@@ -8,5 +8,5 @@ jobs:
       - name: run-truffle-tests
         run: |
           ls
-          npm install
+          npm install chai
           npx truffle test
