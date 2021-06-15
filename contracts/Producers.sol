@@ -30,7 +30,7 @@ contract Producers
     uint256 size;
   }
   
-  uint256 producer_count;
+  uint256 public producer_count;
   mapping(uint256 => Producer) public producers;
   
   function addProducer(
@@ -44,7 +44,6 @@ contract Producers
     string memory image
     ) public
   {
-    producer_count += 1;
     producers[producer_count] = Producer(producer_count,
       name,
       email,
@@ -53,5 +52,6 @@ contract Producers
       region,
       country,bio,
       image);
+    producer_count += 1;
   }
 }

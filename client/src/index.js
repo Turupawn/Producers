@@ -1,9 +1,10 @@
 var contract
 var accounts
 var web3
+var contract_address = "0x42DeE8A729E6beEf25Db0985fd214C99EefA9173"
 
 const getProducer = async () => {
-  contract.options.address="0xd069B2b8f017f9F9AfE6E0543A62cee680B2898D"
+  contract.options.address = contract_address
   var producer_id = document.getElementById("producer_id").value
   producer_json = await contract.methods
     .producers(
@@ -12,8 +13,15 @@ const getProducer = async () => {
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
 }
 
+const getProducerCount = async () => {
+  contract.options.address = contract_address
+  producer_count = await contract.methods
+    .producer_count().call()
+  document.getElementById("producer_count").innerHTML = "Cantidad de productores: " + producer_count
+}
+
 const addProducer = async () => {
-  contract.options.address="0xd069B2b8f017f9F9AfE6E0543A62cee680B2898D"
+  contract.options.address= contract_address
   var input_name = document.getElementById("name").value
   var input_email = document.getElementById("email").value
   var input_phone = document.getElementById("phone").value
@@ -45,9 +53,10 @@ async function loadApp() {
           contract = await getContract(web3);
           var awaitAccounts = async function () {
             accounts = await web3.eth.getAccounts()
+            getProducerCount()
             console.log("Web3 loaded")
           };
-          awaitAccounts();
+          awaitAccounts()
         };
         awaitContract();
       } else {

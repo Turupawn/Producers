@@ -3,24 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>parménides.finance</title>
+    <title>Productores</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
-  <h1>Holas</h1>
-  <input id="name" type=text value="name"/>
-  <input id="email" type=text value="email"/>
-  <input id="phone" type=text value="phone"/>
-  <input id="whatsapp" type=text value="whatsapp"/>
-  <input id="region" type=text value="region"/>
-  <input id="country" type=text value="country"/>
-  <input id="bio" type=text value="bio"/>
-  <input id="image" type=text value="image"/>
+  <h1>Agrega un nuevo productor</h1>
+  <input id="name" type=text value="name"/><br/>
+  <input id="email" type=text value="email"/><br/>
+  <input id="phone" type=text value="phone"/><br/>
+  <input id="whatsapp" type=text value="whatsapp"/><br/>
+  <input id="region" type=text value="region"/><br/>
+  <input id="country" type=text value="country"/><br/>
+  <input id="bio" type=text value="bio"/><br/>
+  <input id="image" type=text value="image"/><br/>
   <button onclick="addProducer()">Guardar</button>
-  <button onclick="getProducer()">Obtener</button>
-
+  <h1>Consulta un productor</h1>
+  <p id="producer_count">Cantidad de productores: </p>
   <input id="producer_id" type=text value="1"/>
+  <button onclick="getProducerCount()">Obtener</button><br/>
   <p style="word-wrap: break-word; " id="producer"></p>
   
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
