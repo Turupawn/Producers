@@ -7,6 +7,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: run-truffle-tests
         run: |
-          ls
           npm install chai
           npx truffle test
