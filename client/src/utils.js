@@ -132,3 +132,28 @@ var getJSON = function (url, callback) {
   };
   xhr.send();
 };
+
+async function loadApp() {
+  var awaitWeb3 = async function () {
+    web3 = await getWeb3();
+    web3.eth.net.getId((err, netId) => {
+      if (netId == 42) {
+        var awaitContract = async function () {
+          contract = await getContract(web3);
+          var awaitAccounts = async function () {
+            accounts = await web3.eth.getAccounts()
+            getProducerCount()
+            console.log("Web3 loaded")
+          };
+          awaitAccounts()
+        };
+        awaitContract();
+      } else {
+        console.log("Error: Wrong network")
+      }
+    });
+  };
+  awaitWeb3();
+}
+
+loadApp()
