@@ -11,3 +11,5 @@ npm install --global lite-server
 ```bash
 lite-server
 ```
+
+Should open the browser on `http://localhost:3000/`.

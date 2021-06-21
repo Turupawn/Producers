@@ -67,11 +67,6 @@ const getContract = async (web3) => {
   return contract;
 };
 
-const convertToDateString = (epochTime) => {
-  const date = new Date(epochTime * 1000);
-  return date.toLocaleDateString("en-US");
-};
-
 const convertWeiToCrypto = (wei) => {
   const cryptoValue = web3.utils.fromWei(wei, "ether");
   return cryptoValue;
@@ -79,43 +74,6 @@ const convertWeiToCrypto = (wei) => {
 
 const convertCryptoToWei = (crypto) => {
   return web3.utils.toWei(crypto, "ether");
-};
-
-const showRetrieveExpiredFunds = (option, accounts) => {
-  const expiry = new Date(option.expiry * 1000);
-  return option.writer === accounts[0] &&
-    !option.exercised &&
-    !option.canceled &&
-    expiry > Date.now()
-    ? ""
-    : "none";
-};
-
-const showExcercise = (option, accounts) => {
-  const expiry = new Date(option.expiry * 1000);
-  return option.buyer === accounts[0] &&
-    !option.exercised &&
-    expiry > Date.now()
-    ? ""
-    : "none";
-};
-
-const showBuy = (option) => {
-  const expiry = new Date(option.expiry * 1000);
-  return !/^0x0+$/.test(option.buyer) ||
-    option.writer === accounts[0] ||
-    option.canceled ||
-    expiry < Date.now()
-    ? "none"
-    : "";
-};
-
-const showCancel = (option, accounts) => {
-  return option.writer === accounts[0] &&
-    !option.canceled &&
-    /^0x0+$/.test(option.buyer)
-    ? ""
-    : "none";
 };
 
 var getJSON = function (url, callback) {
