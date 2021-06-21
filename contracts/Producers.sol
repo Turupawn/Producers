@@ -14,20 +14,7 @@ contract Producers
     string country;
     string bio;
     string image;
-  }
-  struct Farm {
-    string name;
-    string country;
-    string region; // ??
-    uint256 lat;   // ??
-    uint256 lang;  // ??
-    string description;
-  }
-  struct Lot {
-    uint256 height;
-    string variety;
-    string procedure;
-    uint256 size;
+    address editor;
   }
   
   uint256 public producer_count;

@@ -5,9 +5,7 @@ var web3
 const getProducer = async () => {
   var producer_id = document.getElementById("producer_id").value
   producer_json = await contract.methods
-    .producers(
-      producer_id
-    ).call()
+    .producers(producer_id).call()
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
 }
 
