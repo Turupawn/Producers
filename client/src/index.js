@@ -1,12 +1,14 @@
 var contract
 var accounts
 var web3
+var file_buffer
 
 const getProducer = async () => {
   var producer_id = document.getElementById("producer_id").value
   producer_json = await contract.methods
     .producers(producer_id).call()
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
+  document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['image'];
 }
 
 const getProducerCount = async () => {
@@ -16,6 +18,8 @@ const getProducerCount = async () => {
 }
 
 const addProducer = async () => {
+  const { cid } = await node.add(file_buffer)
+  console.log('successfully stored image on ipfs', cid)
   var input_name = document.getElementById("name").value
   var input_email = document.getElementById("email").value
   var input_phone = document.getElementById("phone").value
@@ -23,7 +27,7 @@ const addProducer = async () => {
   var input_region = document.getElementById("region").value
   var input_country = document.getElementById("country").value
   var input_bio = document.getElementById("bio").value
-  var input_image = document.getElementById("image").value
+  var input_image = cid['string']
   const result = await contract.methods.addProducer(
       input_name,
       input_email,

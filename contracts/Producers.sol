@@ -5,7 +5,6 @@ pragma solidity 0.8.5;
 contract Producers
 {
   struct Producer {
-    uint256 id;
     string name;
     string email;
     string phone;
@@ -28,17 +27,20 @@ contract Producers
     string memory region,
     string memory country,
     string memory bio,
-    string memory image
+    string memory image,
+    address editor
     ) public
   {
-    producers[producer_count] = Producer(producer_count,
+    producers[producer_count] = Producer(
       name,
       email,
       phone,
       whatsapp,
       region,
-      country,bio,
-      image);
+      country,
+      bio,
+      image,
+      editor);
     producer_count += 1;
   }
 }

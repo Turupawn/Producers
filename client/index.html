@@ -16,18 +16,21 @@
   <input id="region" type=text value="region"/><br/>
   <input id="country" type=text value="country"/><br/>
   <input id="bio" type=text value="bio"/><br/>
-  <input id="image" type=text value="image"/><br/>
+  <input id="image_input" type="file" /><br/>
   <button onclick="addProducer()">Guardar</button>
   <h1>Consulta un productor</h1>
   <p id="producer_count">Cantidad de productores: </p>
   <input id="producer_id" type=text value="1"/>
   <button onclick="getProducer()">Obtener</button><br/>
   <p style="word-wrap: break-word; " id="producer"></p>
-  
+  <img id="producer_image">
+
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/big.js@6.0.0/big.min.js'></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.3.5/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script type="text/javascript" src="src/utils.js"></script>
+  <script type="text/javascript" src="src/ipfs_handler.js"></script>
   <script type="text/javascript" src ="src/index.js"></script>
 </body>
 </html>
