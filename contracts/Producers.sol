@@ -45,6 +45,16 @@ contract Producers
     string image,
     address editor
   );
+
+  event AdminAdded(
+    address sender,
+    address new_admin
+  );
+
+  event AdminRevoked(
+    address sender,
+    address new_admin
+  );
   
   /* Public Variables */
   uint256 public producer_count;
@@ -71,11 +81,17 @@ contract Producers
   function addAdminAddress(address _address) public addressIsAdmin(msg.sender)
   {
     addessIsAdmin[_address] = true;
+    emit AdminAdded(
+      msg.sender, _address
+    );
   }
 
-  function removeAdminAddress(address _address) public addressIsAdmin(msg.sender)
+  function revokeAdminAddress(address _address) public addressIsAdmin(msg.sender)
   {
     addessIsAdmin[_address] = false;
+    emit AdminRevoked(
+      msg.sender, _address
+    );
   }
   
   function addProducer(
