@@ -48,3 +48,11 @@ Se emite cuando se crea un productor. Se almacenan todos los campos del producto
 ## EditProducerEvent
 
 Se emite cuando se edita un productor. Se almacenan los nuevos valores de todos los campos del productor así como el address que editó (el sender).
+
+## AdminAdded
+
+Guarda el address del nuevo admin así como el address que le otorgó el rol.
+
+## AdminRevoked
+
+Guarda el address del admin que fué revocado así como el address que le quitó el rol.
