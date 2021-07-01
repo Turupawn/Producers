@@ -18,12 +18,32 @@
   <input id="bio" type=text value="bio"/><br/>
   <input id="image_input" type="file" /><br/>
   <button onclick="addProducer()">Guardar</button>
+
   <h1>Consulta un productor</h1>
   <p id="producer_count">Cantidad de productores: </p>
   <input id="producer_id" type=text value="1"/>
   <button onclick="getProducer()">Obtener</button><br/>
   <p style="word-wrap: break-word; " id="producer"></p>
   <img id="producer_image">
+
+  <h1>Edita un productor</h1>
+  <input id="id_edit" type=text value="id"/><br/>
+  <input id="name_edit" type=text value="name"/><br/>
+  <input id="email_edit" type=text value="email"/><br/>
+  <input id="phone_edit" type=text value="phone"/><br/>
+  <input id="whatsapp_edit" type=text value="whatsapp"/><br/>
+  <input id="region_edit" type=text value="region"/><br/>
+  <input id="country_edit" type=text value="country"/><br/>
+  <input id="bio_edit" type=text value="bio"/><br/>
+  <button onclick="editProducer()">Guardar</button>
+
+  <h1>Consulta Productores Agregados</h1>
+  <button onclick="getAddProducerEvents()">Obtener</button><br/>
+  <p style="word-wrap: break-word; " id="add_producer_events"></p>
+
+  <h1>Consulta Productores Editados</h1>
+  <button onclick="getEditProducerEvents()">Obtener</button><br/>
+  <p style="word-wrap: break-word; " id="edit_producer_events"></p>
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/big.js@6.0.0/big.min.js'></script>

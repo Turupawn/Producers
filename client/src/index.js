@@ -11,6 +11,24 @@ const getProducer = async () => {
   document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['image'];
 }
 
+const getAddProducerEvents = async () => {
+  document.getElementById("add_producer_events").innerHTML = ""
+  contract.events.AddProducerEvent({}, { fromBlock: 0, toBlock: 'latest' }).on(
+    'data', function(event) {
+    console.log(event);
+    document.getElementById("add_producer_events").innerHTML += JSON.stringify(event)
+  }).on('error', console.error);
+}
+
+const getEditProducerEvents = async () => {
+  document.getElementById("edit_producer_events").innerHTML = ""
+  contract.events.EditProducerEvent({}, { fromBlock: 0, toBlock: 'latest' }).on(
+    'data', function(event) {
+    console.log(event);
+    document.getElementById("edit_producer_events").innerHTML += JSON.stringify(event)
+  }).on('error', console.error);
+}
+
 const getProducerCount = async () => {
   producer_count = await contract.methods
     .producer_count().call()
@@ -36,7 +54,36 @@ const addProducer = async () => {
       input_region,
       input_country,
       input_bio,
-      input_image).send({ from: accounts[0], gas: 400000 })
+      input_image,
+      accounts[0]).send({ from: accounts[0], gas: 400000 })
+    .catch((revertReason) => {
+      getRevertReason(revertReason.receipt.transactionHash);
+    });
+};
+
+const editProducer = async () => {
+  const { cid } = await node.add(file_buffer)
+  console.log('successfully stored image on ipfs', cid)
+  var input_id = document.getElementById("id_edit").value
+  var input_name = document.getElementById("name_edit").value
+  var input_email = document.getElementById("email_edit").value
+  var input_phone = document.getElementById("phone_edit").value
+  var input_whatsapp = document.getElementById("whatsapp_edit").value
+  var input_region = document.getElementById("region_edit").value
+  var input_country = document.getElementById("country_edit").value
+  var input_bio = document.getElementById("bio_edit").value
+  var input_image = cid['string']
+  const result = await contract.methods.editProducer(
+      input_id,
+      input_name,
+      input_email,
+      input_phone,
+      input_whatsapp,
+      input_region,
+      input_country,
+      input_bio,
+      input_image,
+      accounts[0]).send({ from: accounts[0], gas: 400000 })
     .catch((revertReason) => {
       getRevertReason(revertReason.receipt.transactionHash);
     });
