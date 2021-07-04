@@ -39,23 +39,76 @@ const addProducer = async () => {
   const { cid } = await node.add(file_buffer)
   console.log('successfully stored image on ipfs', cid)
   var input_name = document.getElementById("name").value
-  var input_email = document.getElementById("email").value
-  var input_phone = document.getElementById("phone").value
-  var input_whatsapp = document.getElementById("whatsapp").value
-  var input_region = document.getElementById("region").value
-  var input_country = document.getElementById("country").value
-  var input_bio = document.getElementById("bio").value
+  var input_height = document.getElementById("height").value
   var input_image = cid['string']
-  const result = await contract.methods.addProducer(
-      input_name,
-      input_email,
-      input_phone,
-      input_whatsapp,
-      input_region,
-      input_country,
-      input_bio,
-      input_image,
-      accounts[0]).send({ from: accounts[0], gas: 400000 })
+
+  var producer = [
+    accounts[0],
+    [ //PersonalInformation
+      input_image,  //photo
+      input_name,   //name
+      "",           //bio
+      "",           //id_number
+      "",           //sex
+      1,            //birthday_year
+      1,            //birthday_month
+      1,            //birthday_day
+    ],
+    [//Organization
+      "",      //name
+      "",      //org_address
+      "",      //location
+      "",      //farm_name
+      "",      //general_description
+    ],
+    [//Farm
+      1,        //georreference_utm_x
+      1,        //georreference_utm_y
+      input_height,        //height
+      1,        //total_area
+      1,        //other_farm_area
+      1,        //forest_area
+      1,        //cacao_area
+      1,        //production_area
+      1,        //template_area
+      1,        //projection_area
+      "",       //variety1
+      "",       //variety2
+      "",       //variety3
+      "",       //variety4
+      true,     //is_chemical
+      true,     //is_organic
+      "",       //performance
+    ],
+    [//Harvest
+      "",       //start1
+      "",       //end1
+      "",       //start2
+      "",       //end2
+    ],
+    [//ProductionVolume
+      1,       //punds
+      1,       //quintal
+      1,       //fruit
+    ],
+    [//CacaoAgroforestalSystem
+      true,       //has_timber
+      "",         //timber_specs
+      true,       //has_fruit
+      "",         //fruit_specs
+      true,       //has_palm
+      "",         //palm_specs
+      true,       //has_musaceae
+      "",         //musaceae_specs
+    ],
+    [//Beneficiary
+      true,         //is_handcrafter
+      true,         //is_industrial
+    ],
+  ];
+
+  const result = await contract.methods.addProducer(producer)
+    .send({ from: accounts[0], gas: 4000000 })
     .catch((revertReason) => {
       getRevertReason(revertReason.receipt.transactionHash);
     });
@@ -66,24 +119,77 @@ const editProducer = async () => {
   console.log('successfully stored image on ipfs', cid)
   var input_id = document.getElementById("id_edit").value
   var input_name = document.getElementById("name_edit").value
-  var input_email = document.getElementById("email_edit").value
-  var input_phone = document.getElementById("phone_edit").value
-  var input_whatsapp = document.getElementById("whatsapp_edit").value
-  var input_region = document.getElementById("region_edit").value
-  var input_country = document.getElementById("country_edit").value
-  var input_bio = document.getElementById("bio_edit").value
+  var input_height = document.getElementById("height_edit").value
   var input_image = cid['string']
-  const result = await contract.methods.editProducer(
-      input_id,
-      input_name,
-      input_email,
-      input_phone,
-      input_whatsapp,
-      input_region,
-      input_country,
-      input_bio,
-      input_image,
-      accounts[0]).send({ from: accounts[0], gas: 400000 })
+
+  var producer = [
+    accounts[0],
+    [ //PersonalInformation
+      input_image,  //photo
+      input_name,   //name
+      "",           //bio
+      "",           //id_number
+      "",           //sex
+      1,            //birthday_year
+      1,            //birthday_month
+      1,            //birthday_day
+    ],
+    [//Organization
+      "",      //name
+      "",      //org_address
+      "",      //location
+      "",      //farm_name
+      "",      //general_description
+    ],
+    [//Farm
+      1,        //georreference_utm_x
+      1,        //georreference_utm_y
+      input_height,        //height
+      1,        //total_area
+      1,        //other_farm_area
+      1,        //forest_area
+      1,        //cacao_area
+      1,        //production_area
+      1,        //template_area
+      1,        //projection_area
+      "",       //variety1
+      "",       //variety2
+      "",       //variety3
+      "",       //variety4
+      true,     //is_chemical
+      true,     //is_organic
+      "",       //performance
+    ],
+    [//Harvest
+      "",       //start1
+      "",       //end1
+      "",       //start2
+      "",       //end2
+    ],
+    [//ProductionVolume
+      1,       //punds
+      1,       //quintal
+      1,       //fruit
+    ],
+    [//CacaoAgroforestalSystem
+      true,       //has_timber
+      "",         //timber_specs
+      true,       //has_fruit
+      "",         //fruit_specs
+      true,       //has_palm
+      "",         //palm_specs
+      true,       //has_musaceae
+      "",         //musaceae_specs
+    ],
+    [//Beneficiary
+      true,         //is_handcrafter
+      true,         //is_industrial
+    ],
+  ];
+
+
+  const result = await contract.methods.editProducer(input_id, producer)
+    .send({ from: accounts[0], gas: 4000000 })
     .catch((revertReason) => {
       getRevertReason(revertReason.receipt.transactionHash);
     });

@@ -27,9 +27,9 @@ contract Producers
   }
 
   /* Structs */
-  struct Registry {
+  struct Producer {
     address editor;
-    Producer producer;
+    PersonalInformation personal_information;
     Organization organization;
     Farm farm;
     Harvest harvest;
@@ -38,7 +38,7 @@ contract Producers
     Beneficiary beneficiary;
   }
 
-  struct Producer {
+  struct PersonalInformation {
     string photo;
     string name;
     string bio;
@@ -130,8 +130,8 @@ contract Producers
   );
   
   /* Public Variables */
-  uint256 public register_count;
-  mapping(uint256 => Registry) public registers;
+  uint256 public producer_count;
+  mapping(uint256 => Producer) public producers;
   mapping(address => bool) public addessIsAdmin;
 
   constructor()
@@ -167,22 +167,22 @@ contract Producers
     );
   }
 
-  function addProducer(Registry memory registry)
+  function addProducer(Producer memory producer)
     public addressIsAdmin(msg.sender)
   {
-    registers[register_count] = registry;
+    producers[producer_count] = producer;
     emit AddProducerEvent(
-      msg.sender, register_count, registry.producer.name
+      msg.sender, producer_count, producer.personal_information.name
     );
-    register_count += 1;
+    producer_count += 1;
   }
 
-  function editProducer(uint256 id, Registry memory registry)
-    public addressIsEditor(registry.editor)
+  function editProducer(uint256 id, Producer memory producer)
+    public addressIsEditor(producer.editor)
   {
-    registers[id] = registry;
+    producers[id] = producer;
     emit EditProducerEvent(
-      msg.sender, register_count, registry.producer.name
+      msg.sender, producer_count, producer.personal_information.name
     );
   }
 }
