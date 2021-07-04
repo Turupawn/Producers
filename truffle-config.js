@@ -23,13 +23,6 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const fs = require('fs');
 
-var secretFileCheck = new File(".secret");
-if(secretFileCheck.exists()){
-  const mnemonic = fs.readFileSync(".secret").toString().trim();
-}
-
-
-
 
 module.exports = {
   /**
@@ -67,7 +60,10 @@ module.exports = {
     // NB: It's important to wrap the provider as a function.
     kovan: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, `https://kovan.infura.io/v3/a3e70735b4cf401b9148e1fea8f5a288`)
+        return new HDWalletProvider(
+          fs.readFileSync(".secret").toString().trim(),
+          `https://kovan.infura.io/v3/a3e70735b4cf401b9148e1fea8f5a288`
+        )
       },
       network_id: 42,
       confirmations: 2,
