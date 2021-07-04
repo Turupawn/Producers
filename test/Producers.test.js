@@ -7,26 +7,79 @@ contract('Producers', function () {
     this.producers = await Producers.new();
   });
 
+
+  var value = [
+    "0x4d739Eb42A5869c71b483b1e0d72C3979E3F3769",
+    [//Producer
+      "",
+      "Juan",
+      "",
+      "",
+      "",
+      1,
+      1,
+      1
+    ],
+    [//Organization
+      "",
+      "",
+      "",
+      "",
+      "",
+    ],
+    [//Farm
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "",
+      "",
+      "",
+      "",
+      true,
+      true,
+      "",
+    ],
+    [//Harvest
+      "",
+      "",
+      "",
+      "",
+    ],
+    [//ProductionVolume
+      "1",
+      "1",
+      "1",
+    ],
+    [//CacaoAgroforestalSystem
+      true,
+      "",
+      true,
+      "",
+      true,
+      "",
+      true,
+      "",
+    ],
+    [//Beneficiary
+      true,
+      true,
+    ],
+  ];
+
+
   it('addProducers stores producer', async function () {
     await this.producers.addProducer(
-      "name",
-      "email",
-      "phone",
-      "whatsapp",
-      "region",
-      "country",
-      "bio",
-      "image"
+      value
     );
 
-    var first_producer = await this.producers.producers(1)
-    expect(first_producer.name).to.equal('name');
-    expect(first_producer.email).to.equal('email');
-    expect(first_producer.phone).to.equal('phone');
-    expect(first_producer.whatsapp).to.equal('whatsapp');
-    expect(first_producer.region).to.equal('region');
-    expect(first_producer.country).to.equal('country');
-    expect(first_producer.bio).to.equal('bio');
-    expect(first_producer.image).to.equal('image');
+    var first_producer = await this.producers.registers(0)
+    expect(first_producer.producer.name).to.equal('Juan');
   });
 });

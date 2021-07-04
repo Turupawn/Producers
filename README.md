@@ -1,6 +1,6 @@
 Honduras agricultural producers database stored on the distributed and transparent LacChain blockchain.
 
-Currently deployed in kovan at `0xF894ac2181144CC52D49816bC6893673F50f9f5B`.
+Currently deployed in kovan at `0x305854915144Db2ea20dfceE1E9bf1f5350DD5f1`.
 
 # Compile and Test
 

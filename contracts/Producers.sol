@@ -4,46 +4,119 @@ pragma solidity 0.8.5;
 
 contract Producers
 {
+  struct A {
+    uint256 x;
+    string y;
+  }
+  struct B {
+    A a;
+    uint256 x;
+  }
+
+  A public a;
+  B public b;
+
+  function functionA(A memory _a) public
+  {
+    a = _a;
+  }
+
+  function functionB(B memory _b) public
+  {
+    b = _b;
+  }
+
   /* Structs */
-  struct Producer {
-    string name;
-    string email;
-    string phone;
-    string whatsapp;
-    string region;
-    string country;
-    string bio;
-    string image;
+  struct Registry {
     address editor;
+    Producer producer;
+    Organization organization;
+    Farm farm;
+    Harvest harvest;
+    ProductionVolume production_volume;
+    CacaoAgroforestalSystem cacao_agroforestal_system;
+    Beneficiary beneficiary;
+  }
+
+  struct Producer {
+    string photo;
+    string name;
+    string bio;
+    string id_number;
+    string sex;
+    uint256 birthday_year;
+    uint256 birthday_month;
+    uint256 birthday_day;
+  }
+
+  struct Organization {
+    string name;
+    string org_address;
+    string location;
+    string farm_name;
+    string general_description;
+  }
+
+  struct Farm {
+    uint256 georreference_utm_x;
+    uint256 georreference_utm_y;
+    uint256 height;
+    uint256 total_area;
+    uint256 other_farm_area;
+    uint256 forest_area;
+    uint256 cacao_area;
+    uint256 production_area;
+    uint256 template_area;
+    uint256 projection_area;
+    string variety1;
+    string variety2;
+    string variety3;
+    string variety4;
+    bool is_chemical;
+    bool is_organic;
+    string performance;
+  }
+
+  struct Harvest {
+    string start1;
+    string end1;
+    string start2;
+    string end2;
+  }
+
+  struct ProductionVolume {
+    uint256 punds;
+    uint256 quintal;
+    uint256 fruit;
+  }
+
+  struct CacaoAgroforestalSystem {
+    bool has_timber;
+    string timber_specs;
+    bool has_fruit;
+    string fruit_specs;
+    bool has_palm;
+    string palm_specs;
+    bool has_musaceae;
+    string musaceae_specs;
+  }
+
+  struct Beneficiary {
+    bool is_handcrafter;
+    bool is_industrial;
   }
 
   /* Events */
   event AddProducerEvent(
     address sender,
     uint256 id,
-    string name,
-    string email,
-    string phone,
-    string whatsapp,
-    string region,
-    string country,
-    string bio,
-    string image,
-    address editor
+    string name
   );
 
   event EditProducerEvent(
     address sender,
     uint256 id,
-    string name,
-    string email,
-    string phone,
-    string whatsapp,
-    string region,
-    string country,
-    string bio,
-    string image,
-    address editor
+    string name
   );
 
   event AdminAdded(
@@ -57,8 +130,8 @@ contract Producers
   );
   
   /* Public Variables */
-  uint256 public producer_count;
-  mapping(uint256 => Producer) public producers;
+  uint256 public register_count;
+  mapping(uint256 => Registry) public registers;
   mapping(address => bool) public addessIsAdmin;
 
   constructor()
@@ -73,7 +146,7 @@ contract Producers
   }
 
   modifier addressIsEditor(address editor) {
-    require(msg.sender == editor, "Sender must be editor.");
+    require(addessIsAdmin[msg.sender] || msg.sender == editor, "Sender must be editor.");
     _;
   }
 
@@ -93,45 +166,23 @@ contract Producers
       msg.sender, _address
     );
   }
-  
-  function addProducer(
-    string memory name,
-    string memory email,
-    string memory phone,
-    string memory whatsapp,
-    string memory region,
-    string memory country,
-    string memory bio,
-    string memory image,
-    address editor
-    ) public addressIsAdmin(msg.sender)
+
+  function addProducer(Registry memory registry)
+    public addressIsAdmin(msg.sender)
   {
-    producers[producer_count] = Producer(
-      name, email, phone, whatsapp, region, country, bio, image, editor
-    );
+    registers[register_count] = registry;
     emit AddProducerEvent(
-      msg.sender, producer_count, name, email, phone, whatsapp, region, country, bio, image, editor
+      msg.sender, register_count, registry.producer.name
     );
-    producer_count += 1;
+    register_count += 1;
   }
 
-  function editProducer(
-    uint256 id,
-    string memory name,
-    string memory email,
-    string memory phone,
-    string memory whatsapp,
-    string memory region,
-    string memory country,
-    string memory bio,
-    string memory image,
-    address editor) public addressIsEditor(editor) // addressIsAdmin(msg.sender) can admin edit producers?
+  function editProducer(uint256 id, Registry memory registry)
+    public addressIsEditor(registry.editor)
   {
-    producers[id] = Producer(
-      name, email, phone, whatsapp, region, country, bio, image, editor
-    );
+    registers[id] = registry;
     emit EditProducerEvent(
-      msg.sender, id, name, email, phone, whatsapp, region, country, bio, image, editor
+      msg.sender, register_count, registry.producer.name
     );
   }
 }
