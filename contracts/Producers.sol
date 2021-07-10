@@ -4,28 +4,6 @@ pragma solidity 0.8.5;
 
 contract Producers
 {
-  struct A {
-    uint256 x;
-    string y;
-  }
-  struct B {
-    A a;
-    uint256 x;
-  }
-
-  A public a;
-  B public b;
-
-  function functionA(A memory _a) public
-  {
-    a = _a;
-  }
-
-  function functionB(B memory _b) public
-  {
-    b = _b;
-  }
-
   /* Structs */
   struct Producer {
     address editor;
