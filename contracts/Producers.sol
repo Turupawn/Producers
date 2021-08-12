@@ -4,28 +4,6 @@ pragma solidity 0.8.5;
 
 contract Producers
 {
-  struct A {
-    uint256 x;
-    string y;
-  }
-  struct B {
-    A a;
-    uint256 x;
-  }
-
-  A public a;
-  B public b;
-
-  function functionA(A memory _a) public
-  {
-    a = _a;
-  }
-
-  function functionB(B memory _b) public
-  {
-    b = _b;
-  }
-
   /* Structs */
   struct Producer {
     address editor;
@@ -132,43 +110,12 @@ contract Producers
   /* Public Variables */
   uint256 public producer_count;
   mapping(uint256 => Producer) public producers;
-  mapping(address => bool) public addessIsAdmin;
 
   constructor()
   {
-    addessIsAdmin[msg.sender] = true;
   }
 
-  /* Modifer */
-  modifier addressIsAdmin(address _address) {
-    require(addessIsAdmin[_address], "Sender must be admin");
-    _;
-  }
-
-  modifier addressIsEditor(address editor) {
-    require(addessIsAdmin[msg.sender] || msg.sender == editor, "Sender must be editor.");
-    _;
-  }
-
-  /* Public Functions */
-  function addAdminAddress(address _address) public addressIsAdmin(msg.sender)
-  {
-    addessIsAdmin[_address] = true;
-    emit AdminAdded(
-      msg.sender, _address
-    );
-  }
-
-  function revokeAdminAddress(address _address) public addressIsAdmin(msg.sender)
-  {
-    addessIsAdmin[_address] = false;
-    emit AdminRevoked(
-      msg.sender, _address
-    );
-  }
-
-  function addProducer(Producer memory producer)
-    public addressIsAdmin(msg.sender)
+  function addProducer(Producer memory producer) public
   {
     producers[producer_count] = producer;
     emit AddProducerEvent(
@@ -177,8 +124,7 @@ contract Producers
     producer_count += 1;
   }
 
-  function editProducer(uint256 id, Producer memory producer)
-    public addressIsEditor(producer.editor)
+  function editProducer(uint256 id, Producer memory producer) public
   {
     producers[id] = producer;
     emit EditProducerEvent(

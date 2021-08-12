@@ -8,7 +8,7 @@ const getProducer = async () => {
   producer_json = await contract.methods
     .producers(producer_id).call()
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
-  document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['image'];
+  document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['personal_information'][0]
 }
 
 const getAddProducerEvents = async () => {
@@ -36,11 +36,11 @@ const getProducerCount = async () => {
 }
 
 const addProducer = async () => {
-  const { cid } = await node.add(file_buffer)
+  const { cid } = await node.add(file_buffer, { cidVersion: 2 })
   console.log('successfully stored image on ipfs', cid)
   var input_name = document.getElementById("name").value
   var input_height = document.getElementById("height").value
-  var input_image = cid['string']
+  var input_image = cid._baseCache.get("z")
 
   var producer = [
     accounts[0],
@@ -108,7 +108,7 @@ const addProducer = async () => {
   ];
 
   const result = await contract.methods.addProducer(producer)
-    .send({ from: accounts[0], gas: 4000000 })
+    .send({ from: accounts[0], gas: 0 })
     .catch((revertReason) => {
       getRevertReason(revertReason.receipt.transactionHash);
     });

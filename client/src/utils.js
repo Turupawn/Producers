@@ -51,7 +51,8 @@ async function getRevertReason(txHash) {
     .catch((revertReason) => {
       var str = "" + revertReason;
       json_reason = JSON.parse(str.substring(str.indexOf("{")));
-      handleRevertError(json_reason.message);
+      console.log(revertReason)
+      //handleRevertError(json_reason.message);
     });
 }
 
@@ -95,13 +96,17 @@ async function loadApp() {
   var awaitWeb3 = async function () {
     web3 = await getWeb3();
     web3.eth.net.getId((err, netId) => {
-      if (netId == 42) {
+      if (netId == 648529) {
         var awaitContract = async function () {
           contract = await getContract(web3);
           var awaitAccounts = async function () {
             accounts = await web3.eth.getAccounts()
             getProducerCount()
             console.log("Web3 loaded")
+
+
+
+            await getRevertReason("0xf8f372181f25872a52ed266b0b964decde52f70a01dcc06f558d40be0aaef71a")
           };
           awaitAccounts()
         };
