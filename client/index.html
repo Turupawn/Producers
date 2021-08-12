@@ -9,22 +9,87 @@
 </head>
 <body>
   <h1>Agrega un nuevo productor</h1>
-  <input id="name" type=text value="name"/><br/>
-  <input id="height" type=text value="height"/><br/>
-  <input id="image_input" type="file" /><br/>
+  <!-- PersonalInformation -->
+  <h3>Información personal</h3>
+  <span>Imágen: </span>  <input id="image_input" type="file" /><br/>
+  <span>Nombre: </span><input id="name" type=text /><br/>
+  <span>Bio: </span><input id="bio" type=text /><br/>
+  <span>Identificador: </span><input id="id_number" type=text /><br/>
+  <span>Sexo: </span><input id="sex" type=text /><br/>
+  <span>Año de nacimiento: </span><input id="birthday_year" type=number /><br/>
+  <span>Mes de nacimiento: </span><input id="birthday_month" type=number /><br/>
+  <span>Dia de nacimiento: </span><input id="birthday_day" type=number /><br/>
+
+  <!-- Organization -->
+  <h3>Organización</h3>
+  <span>Name: </span><input id="name" type=text /><br/>
+  <span>Dirección de la org.: </span><input id="org_address" type=text /><br/>
+  <span>Ubicación: </span><input id="location" type=text /><br/>
+  <span>Nombre de granja: </span><input id="farm_name" type=text /><br/>
+  <span>Descipción general: </span><input id="general_description" type=text /><br/>
+
+  <!-- Farm -->
+  <h3>Granja</h3>
+  <span>Georreferencia UTM X: </span><input id="georreference_utm_x" type=number /><br/>
+  <span>Georreferencia UTM Y: </span><input id="georreference_utm_y" type=number /><br/>
+  <span>Altura: </span><input id="height" type=number /><br/>
+  <span>Area total: </span><input id="total_area" type=number /><br/>
+  <span>Area de otra granja: </span><input id="other_farm_area" type=number /><br/>
+  <span>Area de bosque: </span><input id="forest_area" type=number /><br/>
+  <span>Area de cacao: </span><input id="cacao_area" type=number /><br/>
+  <span>Area de producción: </span><input id="production_area" type=number /><br/>
+  <span>Area de plantilla: </span><input id="template_area" type=number /><br/>
+  <span>Area de proyección: </span><input id="projection_area" type=number /><br/>
+  <span>Variedad 1: </span><input id="variety1" type=text /><br/>
+  <span>Variedad 2: </span><input id="variety2" type=text /><br/>
+  <span>Variedad 3: </span><input id="variety3" type=text /><br/>
+  <span>Variedad 4: </span><input id="variety4" type=text /><br/>
+  <span>Es químico: </span><input id="is_chemical" type=checkbox /><br/>
+  <span>Es orgánico: </span><input id="is_organic" type=checkbox /><br/>
+  <span>Rendimiento: </span><input id="performance" type=text /><br/>
+
+  <!-- Harvest -->
+  <h3>Cosecha</h3>
+  <span>Inicio 1: </span><input id="start1" type=text /><br/>
+  <span>Fin 1: </span><input id="end1" type=text /><br/>
+  <span>Inicio 2: </span><input id="start2" type=text /><br/>
+  <span>Fin 2: </span><input id="end2" type=text /><br/>
+
+  <!-- ProductionVolume -->
+  <h3>Volumen de producción</h3>
+  <span>Libras: </span><input id="punds" type=number /><br/>
+  <span>Quintal: </span><input id="quintal" type=number /><br/>
+  <span>Fruta: </span><input id="fruit" type=number /><br/>
+
+  <!-- CacaoAgroforestalSystem -->
+  <h3>Sistema de cacao agroforestal</h3>
+  <span>Tiene madera: </span><input id="has_timber" type=checkbox /><br/>
+  <span>Especificaciones de madera: </span><input id="timber_specs" type=text /><br/>
+  <span>Tiene fruta: </span><input id="has_fruit" type=checkbox /><br/>
+  <span>Especificaciones de fruta: </span><input id="fruit_specs" type=text /><br/>
+  <span>Tiene palma: </span><input id="has_palm" type=checkbox /><br/>
+  <span>Especificaciones de palma: </span><input id="palm_specs" type=text /><br/>
+  <span>Tiene musacea: </span><input id="has_musaceae" type=checkbox /><br/>
+  <span>Especificaciones de musacea: </span><input id="musaceae_specs" type=text /><br/>
+
+  <!-- Beneficiary -->
+  <h3>Beneficiario</h3>
+  <span>Es handcrafter: </span><input id="is_handcrafter" type=checkbox /><br/>
+  <span>Es industrial: </span><input id="is_industrial" type=checkbox /><br/>
+
   <button onclick="addProducer()">Guardar</button>
 
   <h1>Consulta un productor</h1>
   <p id="producer_count">Cantidad de productores: </p>
-  <input id="producer_id" type=text value="1"/>
+  <input id="producer_id" type=text />
   <button onclick="getProducer()">Obtener</button><br/>
   <p style="word-wrap: break-word; " id="producer"></p>
   <img id="producer_image">
 
   <h1>Edita un productor</h1>
-  <input id="id_edit" type=text value="id"/><br/>
-  <input id="name_edit" type=text value="name"/><br/>
-  <input id="height_edit" type=text value="height"/><br/>
+  <input id="id_edit" type=text /><br/>
+  <input id="name_edit" type=text /><br/>
+  <input id="height_edit" type=text /><br/>
   <button onclick="editProducer()">Guardar</button>
 
   <h1>Consulta Productores Agregados</h1>
