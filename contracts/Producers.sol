@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.8.5;
+pragma solidity 0.8.6;
 
-contract Producers
+import "./Ownable.sol";
+
+contract Producers is Ownable
 {
   /* Structs */
   struct Producer {
@@ -115,7 +117,7 @@ contract Producers
   {
   }
 
-  function addProducer(Producer memory producer) public
+  function addProducer(Producer memory producer) public onlyOwner
   {
     producers[producer_count] = producer;
     emit AddProducerEvent(
@@ -124,7 +126,7 @@ contract Producers
     producer_count += 1;
   }
 
-  function editProducer(uint256 id, Producer memory producer) public
+  function editProducer(uint256 id, Producer memory producer) public onlyOwner
   {
     producers[id] = producer;
     emit EditProducerEvent(
