@@ -11,10 +11,10 @@ contract('Producers', function () {
     [ // PersonalInformation
         "", //photo
         "Juan", //name
-        "", //id_number
+        "0801199583552", //id_number
         "", //rtn
         "", //birthday
-        "", //sex
+        "", //gender
         "", //marital_status
         1, //amount_childs
         1, //amount_sons
@@ -88,10 +88,10 @@ contract('Producers', function () {
     [ // PersonalInformation
         "", //photo
         "Pedro", //name
-        "", //id_number
+        "0801199583552", //id_number
         "", //rtn
         "", //birthday
-        "", //sex
+        "", //gender
         "", //marital_status
         1, //amount_childs
         1, //amount_sons

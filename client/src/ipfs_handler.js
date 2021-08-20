@@ -4,7 +4,7 @@ function setFileBuffer(_file_buffer)
   console.log("File buffer stored", file_buffer)
 }
 
-document.querySelector('#image_input').addEventListener('change', function() {
+document.querySelector('#pi_photo').addEventListener('change', function() {
   var reader = new FileReader();
   reader.onload = function() {
     var arrayBuffer = this.result,

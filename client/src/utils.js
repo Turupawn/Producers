@@ -106,7 +106,7 @@ async function loadApp() {
 
 
 
-            await getRevertReason("0xf8f372181f25872a52ed266b0b964decde52f70a01dcc06f558d40be0aaef71a")
+            await getRevertReason("0xadb765f94b49121022e713dc42eaa9002dacf0d6b5452f968e4e46942479ceb8")
           };
           awaitAccounts()
         };

@@ -1,6 +1,6 @@
 Honduras agricultural producers database stored on the distributed and transparent LacChain blockchain.
 
-Currently deployed in kovan at `0x9B5f932a84191B8F5127f7dD557b9a46F2D457FB`.
+Currently deployed in lacchain at `0xc35E3D108d39D265a484C6ABE961c8ed00659B52`.
 
 # Compile and Test
 
@@ -12,13 +12,13 @@ npx truffle test
 # Deploy
 
 ```bash
-npx truffle migrate --network kovan
+npx truffle migrate --network lacchain
 ```
 
 # Console
 
 ```bash
-npx truffle console --network kovan
+npx truffle console --network lacchain
 ```
 
 # Roles y permisos

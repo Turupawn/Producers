@@ -23,7 +23,7 @@ contract Producers is Ownable
     string id_number;
     string rtn;
     string birthday;
-    string sex;
+    string gender;
     string marital_status;
     uint256 amount_childs;
     uint256 amount_sons;
@@ -92,7 +92,7 @@ contract Producers is Ownable
     uint256 dry_and_fermented;
     uint256 dry_only;
 
-    uint256 total_volume;
+    uint256 total_year_volume;
     string cacao_atributes_and_profile;
 
     uint256 status;
@@ -106,14 +106,22 @@ contract Producers is Ownable
   {
   }
 
-  function addProducer(Producer memory producer) public onlyOwner
+  function addProducer(Producer memory producer) public onlyOwner requiredFields(producer)
   {
     producer_count += 1;
     producers[producer_count] = producer;
   }
 
-  function editProducer(uint256 id, Producer memory producer) public onlyOwner
+  function editProducer(uint256 id, Producer memory producer) public onlyOwner requiredFields(producer)
   {
     producers[id] = producer;
   }
+
+   modifier requiredFields(Producer memory producer)
+   {
+    require(bytes(producer.personal_information.name).length != 0,"Must have personal information name");
+    require(bytes(producer.personal_information.id_number).length != 0,"Must have personal information id number");
+    //require(producer.harvest.status != 0,"Must have harvest status");
+    _;
+   }
 }

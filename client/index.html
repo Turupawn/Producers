@@ -9,73 +9,81 @@
 </head>
 <body>
   <h1>Agrega un nuevo productor</h1>
-  <!-- PersonalInformation -->
-  <h3>Información personal</h3>
-  <span>Imágen: </span>  <input id="image_input" type="file" /><br/>
-  <span>Nombre: </span><input id="name" type=text /><br/>
-  <span>Bio: </span><input id="bio" type=text /><br/>
-  <span>Identificador: </span><input id="id_number" type=text /><br/>
-  <span>Sexo: </span><input id="sex" type=text /><br/>
-  <span>Año de nacimiento: </span><input id="birthday_year" type=number /><br/>
-  <span>Mes de nacimiento: </span><input id="birthday_month" type=number /><br/>
-  <span>Dia de nacimiento: </span><input id="birthday_day" type=number /><br/>
 
-  <!-- Organization -->
-  <h3>Organización</h3>
-  <span>Name: </span><input id="name" type=text /><br/>
-  <span>Dirección de la org.: </span><input id="org_address" type=text /><br/>
-  <span>Ubicación: </span><input id="location" type=text /><br/>
-  <span>Nombre de granja: </span><input id="farm_name" type=text /><br/>
-  <span>Descipción general: </span><input id="general_description" type=text /><br/>
+  <h3>PersonalInformation</h3>
+  <span>FOTOGRAFIA: </span>  <input id="pi_photo" type="file" /><br/>
+  <span>NOMBRE COMPLETO: </span><input id="pi_name" type=text /><br/>
+  <span>IDENTIDAD: </span><input id="pi_id_number" type=text /><br/>
+  <span>RTN: </span><input id="pi_rtn" type=text /><br/>
+  <span>FECHA NACIMIENTO: </span><input id="pi_birthday" type=text /><br/>
+  <span>GENERO: </span><input id="pi_gender" type=text /><br/>
+  <span>ESTADO CIVIL: </span><input id="pi_marital_status" type=text /><br/>
+  <span>NUMERO HIJOS: </span><input id="pi_amount_childs" type=number /><br/>
+  <span>HIJOS HOMBRES: </span><input id="pi_amount_sons" type=number /><br/>
+  <span>HIJOS MUJERES: </span><input id="pi_amount_daugters" type=number /><br/>
+  <span>CELULAR: </span><input id="pi_cellphone" type=text /><br/>
+  <span>EMAIL: </span><input id="pi_email" type=text /><br/>
+  <span>BIOGRAFIA: </span><input id="pi_bio" type=text /><br/>
 
-  <!-- Farm -->
-  <h3>Granja</h3>
-  <span>Georreferencia UTM X: </span><input id="georreference_utm_x" type=number /><br/>
-  <span>Georreferencia UTM Y: </span><input id="georreference_utm_y" type=number /><br/>
-  <span>Altura: </span><input id="height" type=number /><br/>
-  <span>Area total: </span><input id="total_area" type=number /><br/>
-  <span>Area de otra granja: </span><input id="other_farm_area" type=number /><br/>
-  <span>Area de bosque: </span><input id="forest_area" type=number /><br/>
-  <span>Area de cacao: </span><input id="cacao_area" type=number /><br/>
-  <span>Area de producción: </span><input id="production_area" type=number /><br/>
-  <span>Area de plantilla: </span><input id="template_area" type=number /><br/>
-  <span>Area de proyección: </span><input id="projection_area" type=number /><br/>
-  <span>Variedad 1: </span><input id="variety1" type=text /><br/>
-  <span>Variedad 2: </span><input id="variety2" type=text /><br/>
-  <span>Variedad 3: </span><input id="variety3" type=text /><br/>
-  <span>Variedad 4: </span><input id="variety4" type=text /><br/>
-  <span>Es químico: </span><input id="is_chemical" type=checkbox /><br/>
-  <span>Es orgánico: </span><input id="is_organic" type=checkbox /><br/>
-  <span>Rendimiento: </span><input id="performance" type=text /><br/>
+  <h3>FarmInfo</h3>
+  <span>NOMBRE DE LA FINCA: </span><input id="fi_name" type=text /><br/>
+  <span>DESCRIPCION DE LA ZONA: </span><input id="fi_zone_description" type=text /><br/>
+  <span>ORGANIZACION PERTENECE: </span><input id="fi_belonging_organization" type=text /><br/>
+  <span>ORGANIZACION DOMICILIO: </span><input id="fi_organization_address" type=text /><br/>
+  <span>UBICACION FINCA: </span><input id="fi_location" type=text /><br/>
+  <span>GEORREFERENCIA X: </span><input id="fi_georeference_x" type=number /><br/>
+  <span>GEORREFERENCIA Y: </span><input id="fi_georeference_y" type=number /><br/>
+  <span>ALTITUD MSNM: </span><input id="fi_msnm_height" type=number /><br/>
 
-  <!-- Harvest -->
-  <h3>Cosecha</h3>
-  <span>Inicio 1: </span><input id="start1" type=text /><br/>
-  <span>Fin 1: </span><input id="end1" type=text /><br/>
-  <span>Inicio 2: </span><input id="start2" type=text /><br/>
-  <span>Fin 2: </span><input id="end2" type=text /><br/>
 
-  <!-- ProductionVolume -->
-  <h3>Volumen de producción</h3>
-  <span>Libras: </span><input id="punds" type=number /><br/>
-  <span>Quintal: </span><input id="quintal" type=number /><br/>
-  <span>Fruta: </span><input id="fruit" type=number /><br/>
+  <h3>FarmArea</h3>
+  <span>AREA TOTAL DE LA FINCA: </span><input id="fa_total" type=number /><br/>
+  <span>AREA CON OTROS CULTIVOS: </span><input id="fa_other_farm" type=number /><br/>
+  <span>AREA DE BOSQUE: </span><input id="fa_forest" type=number /><br/>
+  <span>AREA CULTIVADA DE CACAO: </span><input id="fa_cacao" type=number /><br/>
+  <span>AREA EN PRODUCCION: </span><input id="fa_production" type=number /><br/>
+  <span>AREA EN PLANTILLA: </span><input id="fa_template" type=number /><br/>
+  <span>AREA PROYECTADA: </span><input id="fa_projection" type=number /><br/>
 
-  <!-- CacaoAgroforestalSystem -->
-  <h3>Sistema de cacao agroforestal</h3>
-  <span>Tiene madera: </span><input id="has_timber" type=checkbox /><br/>
-  <span>Especificaciones de madera: </span><input id="timber_specs" type=text /><br/>
-  <span>Tiene fruta: </span><input id="has_fruit" type=checkbox /><br/>
-  <span>Especificaciones de fruta: </span><input id="fruit_specs" type=text /><br/>
-  <span>Tiene palma: </span><input id="has_palm" type=checkbox /><br/>
-  <span>Especificaciones de palma: </span><input id="palm_specs" type=text /><br/>
-  <span>Tiene musacea: </span><input id="has_musaceae" type=checkbox /><br/>
-  <span>Especificaciones de musacea: </span><input id="musaceae_specs" type=text /><br/>
+  <h3>Plantation</h3>
+  <span>VARIEDAD PLANTADA 1: </span><input id="p_variety_1" type=text /><br/>
+  <span>VARIEDAD PLANTADA 2: </span><input id="p_variety_2" type=text /><br/>
+  <span>VARIEDAD PLANTADA 3: </span><input id="p_variety_3" type=text /><br/>
+  <span>VARIEDAD PLANTADA 4: </span><input id="p_variety_4" type=text /><br/>
+  <span>VARIEDAD PLANTADA 5: </span><input id="p_variety_5" type=text /><br/>
+  <span>VARIEDAD PLANTADA 6: </span><input id="p_variety_6" type=text /><br/>
+  <span>VARIEDAD PLANTADA 7: </span><input id="p_variety_7" type=text /><br/>
+  <span>VARIEDAD PLANTADA 8: </span><input id="p_variety_8" type=text /><br/>
 
-  <!-- Beneficiary -->
-  <h3>Beneficiario</h3>
-  <span>Es handcrafter: </span><input id="is_handcrafter" type=checkbox /><br/>
-  <span>Es industrial: </span><input id="is_industrial" type=checkbox /><br/>
+  <h3>Farm</h3>
+  <span>MANEJO DE LA FINCA: </span><input id="f_management" type=number /><br/>
+  <span>RENDIMIENTO: </span><input id="f_performance" type=number /><br/>
+
+  <h3>CSA</h3>  
+  <span>CSA MADERABLE: </span><input id="csa_timber" type=number /><br/>
+  <span>CSA MADERABLE DESCRIPCION: </span><input id="csa_timber_description" type=text /><br/>
+  <span>CSA FRUTALES: </span><input id="csa_fruit" type=number /><br/>
+  <span>CSA FRUTALES DESCRIPCION: </span><input id="csa_fruit_description" type=text /><br/>
+  <span>CSA PALMACEAS: </span><input id="csa_palm" type=number /><br/>
+  <span>CSA PALMACEAS DESCRIPCION: </span><input id="csa_palm_description" type=text /><br/>
+  <span>CSA MUSACEAS: </span><input id="csa_musaceae" type=number /><br/>
+  <span>CSA MUSACEASDESCRIPCION: </span><input id="csa_musaceae_description" type=text /><br/>
+
+  <h3>Harvest</h3>
+  <span>FECHA COSECHA 1 INICIO: </span><input id="h_start_1" type=text /><br/>
+  <span>FECHA COSECHA 1 FIN: </span><input id="h_end_1" type=text /><br/>
+  <span>FECHA COSECHA 2 INICIO: </span><input id="h_start_2" type=text /><br/>
+  <span>FECHA COSECHA 1 FIN: </span><input id="h_end_2" type=text /><br/>
+
+  <span>MAZORCA: </span><input id="h_cob" type=number /><br/>
+  <span>EN BABA: </span><input id="h_slime" type=number /><br/>
+  <span>FERMENTADO Y SECO: </span><input id="h_dry_and_fermented" type=number /><br/>
+  <span>SOLO SECADO: </span><input id="h_dry_only" type=number /><br/>
+
+  <span>VOLUMEN TOTAL DE PRODUCCION POR AÑO: </span><input id="h_total_year_volume" type=number /><br/>
+  <span>PERFIL Y ATRIBUTOS DEL CACAO: </span><input id="h_cacao_atributes_and_profile" type=text /><br/>
+  
+  <span>ESTADO: </span><input id="h_status" type=number /><br/>
 
   <button onclick="addProducer()">Guardar</button>
 

@@ -38,125 +38,155 @@ const getProducerCount = async () => {
 const addProducer = async () => {
   const { cid } = await node.add(file_buffer, { cidVersion: 2 })
   console.log('successfully stored image on ipfs', cid)
-  var personal_information_image = cid._baseCache.get("z")
 
-  var personal_information_name = document.getElementById("name").value
-  var personal_information_bio = document.getElementById("bio").value
-  var personal_information_id_number = document.getElementById("id_number").value
-  var personal_information_sex = document.getElementById("sex").value
-  var personal_information_birthday_year = document.getElementById("birthday_year").value
-  var personal_information_birthday_month = document.getElementById("birthday_month").value
-  var personal_information_birthday_day = document.getElementById("birthday_day").value
+  // PersonalInformation
+  var pi_photo = cid._baseCache.get("z")
+  console.log(pi_photo)
+  var pi_name = document.getElementById("pi_name").value
+  var pi_id_number = document.getElementById("pi_id_number").value
+  var pi_rtn = document.getElementById("pi_rtn").value
+  var pi_birthday = document.getElementById("pi_birthday").value
+  var pi_gender = document.getElementById("pi_gender").value
+  var pi_marital_status = document.getElementById("pi_marital_status").value
+  var pi_amount_childs = document.getElementById("pi_amount_childs").value
+  var pi_amount_sons = document.getElementById("pi_amount_sons").value
+  var pi_amount_daugters = document.getElementById("pi_amount_daugters").value
+  var pi_cellphone = document.getElementById("pi_cellphone").value
+  var pi_email = document.getElementById("pi_email").value
+  var pi_bio = document.getElementById("pi_bio").value
 
-  var organization_name = document.getElementById("name").value
-  var organization_org_address = document.getElementById("org_address").value
-  var organization_location = document.getElementById("location").value
-  var organization_farm_name = document.getElementById("farm_name").value
-  var organization_general_description = document.getElementById("general_description").value
+  // FarmInfo
+  var fi_name = document.getElementById("fi_name").value
+  var fi_zone_description = document.getElementById("fi_zone_description").value
+  var fi_belonging_organization = document.getElementById("fi_belonging_organization").value
+  var fi_organization_address = document.getElementById("fi_organization_address").value
+  var fi_location = document.getElementById("fi_location").value
+  var fi_georeference_x = document.getElementById("fi_georeference_x").value
+  var fi_georeference_y = document.getElementById("fi_georeference_y").value
+  var fi_msnm_height = document.getElementById("fi_msnm_height").value
 
-  var farm_georreference_utm_x = document.getElementById("georreference_utm_x").value
-  var farm_georreference_utm_y = document.getElementById("georreference_utm_y").value
-  var farm_height = document.getElementById("height").value
-  var farm_total_area = document.getElementById("total_area").value
-  var farm_other_farm_area = document.getElementById("other_farm_area").value
-  var farm_forest_area = document.getElementById("forest_area").value
-  var farm_cacao_area = document.getElementById("cacao_area").value
-  var farm_production_area = document.getElementById("production_area").value
-  var farm_template_area = document.getElementById("template_area").value
-  var farm_projection_area = document.getElementById("projection_area").value
-  var farm_variety1 = document.getElementById("variety1").value
-  var farm_variety2 = document.getElementById("variety2").value
-  var farm_variety3 = document.getElementById("variety3").value
-  var farm_variety4 = document.getElementById("variety4").value
-  var farm_is_chemical = document.getElementById("is_chemical").checked
-  var farm_is_organic = document.getElementById("is_organic").checked
-  var farm_performance = document.getElementById("performance").value
+  // FarmArea
+  var fa_total = document.getElementById("fa_total").value
+  var fa_other_farm = document.getElementById("fa_other_farm").value
+  var fa_forest = document.getElementById("fa_forest").value
+  var fa_cacao = document.getElementById("fa_cacao").value
+  var fa_production = document.getElementById("fa_production").value
+  var fa_template = document.getElementById("fa_template").value
+  var fa_projection = document.getElementById("fa_projection").value
 
-  var harvest_start1 = document.getElementById("start1").value
-  var harvest_end1 = document.getElementById("end1").value
-  var harvest_start2 = document.getElementById("start2").value
-  var harvest_end2 = document.getElementById("end2").value
+  // Plantation
+  var p_variety_1 = document.getElementById("p_variety_1").value
+  var p_variety_2 = document.getElementById("p_variety_2").value
+  var p_variety_3 = document.getElementById("p_variety_3").value
+  var p_variety_4 = document.getElementById("p_variety_4").value
+  var p_variety_5 = document.getElementById("p_variety_5").value
+  var p_variety_6 = document.getElementById("p_variety_6").value
+  var p_variety_7 = document.getElementById("p_variety_7").value
+  var p_variety_8 = document.getElementById("p_variety_8").value
 
-  var production_volume_punds = document.getElementById("punds").value
-  var production_volume_quintal = document.getElementById("quintal").value
-  var production_volume_fruit = document.getElementById("fruit").value
-  
-  var cacao_agroforestal_system_volume_has_timber = document.getElementById("has_timber").checked
-  var cacao_agroforestal_system_volume_timber_specs = document.getElementById("timber_specs").value
-  var cacao_agroforestal_system_volume_has_fruit = document.getElementById("has_fruit").checked
-  var cacao_agroforestal_system_volume_fruit_specs = document.getElementById("fruit_specs").value
-  var cacao_agroforestal_system_volume_has_palm = document.getElementById("has_palm").checked
-  var cacao_agroforestal_system_volume_palm_specs = document.getElementById("palm_specs").value
-  var cacao_agroforestal_system_volume_has_musaceae = document.getElementById("has_musaceae").checked
-  var cacao_agroforestal_system_volume_musaceae_specs = document.getElementById("musaceae_specs").value
+  // Farm
+  var f_management = document.getElementById("f_management").value
+  var f_performance = document.getElementById("f_performance").value
 
-  var beneficiary_is_handcrafter = document.getElementById("is_handcrafter").checked
-  var beneficiary_is_industrial = document.getElementById("is_industrial").checked
+  // CSA
+  var csa_timber = document.getElementById("csa_timber").value
+  var csa_timber_description = document.getElementById("csa_timber_description").value
+  var csa_fruit = document.getElementById("csa_fruit").value
+  var csa_fruit_description = document.getElementById("csa_fruit_description").value
+  var csa_palm = document.getElementById("csa_palm").value
+  var csa_palm_description = document.getElementById("csa_palm_description").value
+  var csa_musaceae = document.getElementById("csa_musaceae").value
+  var csa_musaceae_description = document.getElementById("csa_musaceae_description").value
+
+  // Harvest
+  var h_start_1 = document.getElementById("h_start_1").value
+  var h_end_1 = document.getElementById("h_end_1").value
+  var h_start_2 = document.getElementById("h_start_2").value
+  var h_end_2 = document.getElementById("h_end_2").value
+  var h_cob = document.getElementById("h_cob").value
+  var h_slime = document.getElementById("h_slime").value
+  var h_dry_and_fermented = document.getElementById("h_dry_and_fermented").value
+  var h_dry_only = document.getElementById("h_dry_only").value
+  var h_total_year_volume = document.getElementById("h_total_year_volume").value
+  var h_cacao_atributes_and_profile = document.getElementById("h_cacao_atributes_and_profile").value
+  var h_status = document.getElementById("h_status").value
 
   var producer = [
-    accounts[0],
-    [ //PersonalInformation
-      personal_information_image,
-      personal_information_name,
-      personal_information_bio,
-      personal_information_id_number,
-      personal_information_sex,
-      personal_information_birthday_year,
-      personal_information_birthday_month,
-      personal_information_birthday_day,
+    [ // PersonalInformation
+        pi_photo,
+        pi_name,
+        pi_id_number,
+        pi_rtn,
+        pi_birthday,
+        pi_gender,
+        pi_marital_status,
+        pi_amount_childs,
+        pi_amount_sons,
+        pi_amount_daugters,
+        pi_cellphone,
+        pi_email,
+        pi_bio,
     ],
-    [//Organization
-      organization_name,
-      organization_org_address,
-      organization_location,
-      organization_farm_name,
-      organization_general_description,
+    [ // FarmInfo
+        fi_name,
+        fi_zone_description,
+        fi_belonging_organization,
+        fi_organization_address,
+        fi_location,
+        fi_georeference_x,
+        fi_georeference_y,
+        fi_msnm_height,
     ],
-    [//Farm
-      farm_georreference_utm_x,
-      farm_georreference_utm_y,
-      farm_height,
-      farm_total_area,
-      farm_other_farm_area,
-      farm_forest_area,
-      farm_cacao_area,
-      farm_production_area,
-      farm_template_area,
-      farm_projection_area,
-      farm_variety1,
-      farm_variety2,
-      farm_variety3,
-      farm_variety4,
-      farm_is_chemical,
-      farm_is_organic,
-      farm_performance,
+    [ // FarmArea
+        fa_total,
+        fa_other_farm,
+        fa_forest,
+        fa_cacao,
+        fa_production,
+        fa_template,
+        fa_projection,
     ],
-    [//Harvest
-      harvest_start1,
-      harvest_end1,
-      harvest_start2,
-      harvest_end2,
+    [ // Plantation
+        p_variety_1,
+        p_variety_2,
+        p_variety_3,
+        p_variety_4,
+        p_variety_5,
+        p_variety_6,
+        p_variety_7,
+        p_variety_8,
     ],
-    [//ProductionVolume
-      production_volume_punds,
-      production_volume_quintal,
-      production_volume_fruit,
+    [ // Farm
+        f_management,
+        f_performance,
     ],
-    [//CacaoAgroforestalSystem
-      cacao_agroforestal_system_volume_has_timber,
-      cacao_agroforestal_system_volume_timber_specs,
-      cacao_agroforestal_system_volume_has_fruit,
-      cacao_agroforestal_system_volume_fruit_specs,
-      cacao_agroforestal_system_volume_has_palm,
-      cacao_agroforestal_system_volume_palm_specs,
-      cacao_agroforestal_system_volume_has_musaceae,
-      cacao_agroforestal_system_volume_musaceae_specs,
+    [ // CSA
+        csa_timber,
+        csa_timber_description,
+        csa_fruit,
+        csa_fruit_description,
+        csa_palm,
+        csa_palm_description,
+        csa_musaceae,
+        csa_musaceae_description,
     ],
-    [//Beneficiary
-      beneficiary_is_handcrafter,
-      beneficiary_is_industrial,
-    ],
-  ];
+    [ // Harvest
+        h_start_1,
+        h_end_1,
+        h_start_2,
+        h_end_2,
+
+        h_cob,
+        h_slime,
+        h_dry_and_fermented,
+        h_dry_only,
+
+        h_total_year_volume,
+        h_cacao_atributes_and_profile,
+
+        h_status,
+    ]
+  ]
 
   const result = await contract.methods.addProducer(producer)
     .send({ from: accounts[0], gas: 0 })
@@ -180,7 +210,7 @@ const editProducer = async () => {
       input_name,   //name
       "",           //bio
       "",           //id_number
-      "",           //sex
+      "",           //gender
       1,            //birthday_year
       1,            //birthday_month
       1,            //birthday_day
