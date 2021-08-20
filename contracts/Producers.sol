@@ -8,107 +8,96 @@ contract Producers is Ownable
 {
   /* Structs */
   struct Producer {
-    address editor;
     PersonalInformation personal_information;
-    Organization organization;
+    FarmInfo farm_info;
+    FarmArea farm_area;
+    Plantation plantation;
     Farm farm;
+    CSA csa;
     Harvest harvest;
-    ProductionVolume production_volume;
-    CacaoAgroforestalSystem cacao_agroforestal_system;
-    Beneficiary beneficiary;
   }
 
   struct PersonalInformation {
     string photo;
     string name;
-    string bio;
     string id_number;
+    string rtn;
+    string birthday;
     string sex;
-    uint256 birthday_year;
-    uint256 birthday_month;
-    uint256 birthday_day;
+    string marital_status;
+    uint256 amount_childs;
+    uint256 amount_sons;
+    uint256 amount_daugters;
+    string cellphone;
+    string email;
+    string bio;
   }
 
-  struct Organization {
+  struct FarmInfo {
     string name;
-    string org_address;
+    string zone_description;
+    string belonging_organization;
+    string organization_address;
     string location;
-    string farm_name;
-    string general_description;
+    uint256 georeference_x;
+    uint256 georeference_y;
+    uint256 msnm_height;
+  }
+
+  struct FarmArea {
+    uint256 total;
+    uint256 other_farm;
+    uint256 forest;
+    uint256 cacao;
+    uint256 production;
+    uint256 template;
+    uint256 projection;
+  }
+
+  struct Plantation {
+    string variety_1;
+    string variety_2;
+    string variety_3;
+    string variety_4;
+    string variety_5;
+    string variety_6;
+    string variety_7;
+    string variety_8;
   }
 
   struct Farm {
-    uint256 georreference_utm_x;
-    uint256 georreference_utm_y;
-    uint256 height;
-    uint256 total_area;
-    uint256 other_farm_area;
-    uint256 forest_area;
-    uint256 cacao_area;
-    uint256 production_area;
-    uint256 template_area;
-    uint256 projection_area;
-    string variety1;
-    string variety2;
-    string variety3;
-    string variety4;
-    bool is_chemical;
-    bool is_organic;
-    string performance;
+    uint256 management;
+    uint256 performance;
+  }
+
+  struct CSA {
+    uint256 timber;
+    string timber_description;
+    uint256 fruit;
+    string fruit_description;
+    uint256 palm;
+    string palm_description;
+    uint256 musaceae;
+    string musaceae_description;
   }
 
   struct Harvest {
-    string start1;
-    string end1;
-    string start2;
-    string end2;
+    string start_1;
+    string end_1;
+    string start_2;
+    string end_2;
+
+    uint256 cob;
+    uint256 slime;
+    uint256 dry_and_fermented;
+    uint256 dry_only;
+
+    uint256 total_volume;
+    string cacao_atributes_and_profile;
+
+    uint256 status;
   }
 
-  struct ProductionVolume {
-    uint256 punds;
-    uint256 quintal;
-    uint256 fruit;
-  }
-
-  struct CacaoAgroforestalSystem {
-    bool has_timber;
-    string timber_specs;
-    bool has_fruit;
-    string fruit_specs;
-    bool has_palm;
-    string palm_specs;
-    bool has_musaceae;
-    string musaceae_specs;
-  }
-
-  struct Beneficiary {
-    bool is_handcrafter;
-    bool is_industrial;
-  }
-
-  /* Events */
-  event AddProducerEvent(
-    address sender,
-    uint256 id,
-    string name
-  );
-
-  event EditProducerEvent(
-    address sender,
-    uint256 id,
-    string name
-  );
-
-  event AdminAdded(
-    address sender,
-    address new_admin
-  );
-
-  event AdminRevoked(
-    address sender,
-    address new_admin
-  );
-  
   /* Public Variables */
   uint256 public producer_count;
   mapping(uint256 => Producer) public producers;
@@ -119,18 +108,12 @@ contract Producers is Ownable
 
   function addProducer(Producer memory producer) public onlyOwner
   {
-    producers[producer_count] = producer;
-    emit AddProducerEvent(
-      msg.sender, producer_count, producer.personal_information.name
-    );
     producer_count += 1;
+    producers[producer_count] = producer;
   }
 
   function editProducer(uint256 id, Producer memory producer) public onlyOwner
   {
     producers[id] = producer;
-    emit EditProducerEvent(
-      msg.sender, producer_count, producer.personal_information.name
-    );
   }
 }

@@ -8,134 +8,158 @@ contract('Producers', function () {
   });
 
   var producer_example1 = [
-    "0x4d739Eb42A5869c71b483b1e0d72C3979E3F3769",
-    [ //PersonalInformation
-      "",     //photo
-      "Juan", //name
-      "",     //bio
-      "",     //id_number
-      "",     //sex
-      1,      //birthday_year
-      1,      //birthday_month
-      1,      //birthday_day
+    [ // PersonalInformation
+        "", //photo
+        "Juan", //name
+        "", //id_number
+        "", //rtn
+        "", //birthday
+        "", //sex
+        "", //marital_status
+        1, //amount_childs
+        1, //amount_sons
+        1, //amount_daugters
+        "", //cellphone
+        "", //email
+        "", //bio
     ],
-    [//Organization
-      "",      //name
-      "",      //org_address
-      "",      //location
-      "",      //farm_name
-      "",      //general_description
+    [ // FarmInfo
+        "", //name
+        "", //zone_description
+        "", //belonging_organization
+        "", //organization_address
+        "", //location
+        1, //georeference_x
+        1, //georeference_y
+        1, //msnm_height
     ],
-    [//Farm
-      1,        //georreference_utm_x
-      1,        //georreference_utm_y
-      1,        //height
-      1,        //total_area
-      1,        //other_farm_area
-      1,        //forest_area
-      1,        //cacao_area
-      1,        //production_area
-      1,        //template_area
-      1,        //projection_area
-      "",       //variety1
-      "",       //variety2
-      "",       //variety3
-      "",       //variety4
-      true,     //is_chemical
-      true,     //is_organic
-      "",       //performance
+    [ // FarmArea
+        1, //total
+        1, //other_farm
+        1, //forest
+        1, //cacao
+        1, //production
+        1, //template
+        1, //projection
     ],
-    [//Harvest
-      "",       //start1
-      "",       //end1
-      "",       //start2
-      "",       //end2
+    [ // Plantation
+        "", //variety_1
+        "", //variety_2
+        "", //variety_3
+        "", //variety_4
+        "", //variety_5
+        "", //variety_6
+        "", //variety_7
+        "", //variety_8
     ],
-    [//ProductionVolume
-      1,       //punds
-      1,       //quintal
-      1,       //fruit
+    [ // Farm
+        1, //management
+        1, //performance
     ],
-    [//CacaoAgroforestalSystem
-      true,       //has_timber
-      "",         //timber_specs
-      true,       //has_fruit
-      "",         //fruit_specs
-      true,       //has_palm
-      "",         //palm_specs
-      true,       //has_musaceae
-      "",         //musaceae_specs
+    [ // CSA
+        1, //timber
+        "", //timber_description
+        1, //fruit
+        "", //fruit_description
+        1, //palm
+        "", //palm_description
+        1, //musaceae
+        "", //musaceae_description
     ],
-    [//Beneficiary
-      true,         //is_handcrafter
-      true,         //is_industrial
-    ],
-  ];
+    [ // Harvest
+        "", //start_1
+        "", //end_1
+        "", //start_2
+        "", //end_2
+
+        1, //cob
+        1, //slime
+        1, //dry_and_fermented
+        1, //dry_only
+
+        1, //total_volume
+        "", //cacao_atributes_and_profile
+
+        1, //status
+    ]
+  ]
 
   var producer_example2 = [
-    "0x4d739Eb42A5869c71b483b1e0d72C3979E3F3769",
-    [ //PersonalInformation
-      "",     //photo
-      "Pedro", //name
-      "",     //bio
-      "",     //id_number
-      "",     //sex
-      1,      //birthday_year
-      1,      //birthday_month
-      1,      //birthday_day
+    [ // PersonalInformation
+        "", //photo
+        "Pedro", //name
+        "", //id_number
+        "", //rtn
+        "", //birthday
+        "", //sex
+        "", //marital_status
+        1, //amount_childs
+        1, //amount_sons
+        1, //amount_daugters
+        "", //cellphone
+        "", //email
+        "", //bio
     ],
-    [//Organization
-      "",      //name
-      "",      //org_address
-      "",      //location
-      "",      //farm_name
-      "",      //general_description
+    [ // FarmInfo
+        "", //name
+        "", //zone_description
+        "", //belonging_organization
+        "", //organization_address
+        "", //location
+        1, //georeference_x
+        1, //georeference_y
+        1, //msnm_height
     ],
-    [//Farm
-      1,        //georreference_utm_x
-      1,        //georreference_utm_y
-      1,        //height
-      1,        //total_area
-      1,        //other_farm_area
-      1,        //forest_area
-      1,        //cacao_area
-      1,        //production_area
-      1,        //template_area
-      1,        //projection_area
-      "",       //variety1
-      "",       //variety2
-      "",       //variety3
-      "",       //variety4
-      true,     //is_chemical
-      true,     //is_organic
-      "",       //performance
+    [ // FarmArea
+        1, //total
+        1, //other_farm
+        1, //forest
+        1, //cacao
+        1, //production
+        1, //template
+        1, //projection
     ],
-    [//Harvest
-      "",       //start1
-      "",       //end1
-      "",       //start2
-      "",       //end2
+    [ // Plantation
+        "", //variety_1
+        "", //variety_2
+        "", //variety_3
+        "", //variety_4
+        "", //variety_5
+        "", //variety_6
+        "", //variety_7
+        "", //variety_8
     ],
-    [//ProductionVolume
-      1,       //punds
-      1,       //quintal
-      1,       //fruit
+    [ // Farm
+        1, //management
+        1, //performance
     ],
-    [//CacaoAgroforestalSystem
-      true,       //has_timber
-      "",         //timber_specs
-      true,       //has_fruit
-      "",         //fruit_specs
-      true,       //has_palm
-      "",         //palm_specs
-      true,       //has_musaceae
-      "",         //musaceae_specs
+    [ // CSA
+        1, //timber
+        "", //timber_description
+        1, //fruit
+        "", //fruit_description
+        1, //palm
+        "", //palm_description
+        1, //musaceae
+        "", //musaceae_description
     ],
-    [//Beneficiary
-      true,         //is_handcrafter
-      true,         //is_industrial
-    ],
-  ];
+    [ // Harvest
+        "", //start_1
+        "", //end_1
+        "", //start_2
+        "", //end_2
+
+        1, //cob
+        1, //slime
+        1, //dry_and_fermented
+        1, //dry_only
+
+        1, //total_volume
+        "", //cacao_atributes_and_profile
+
+        1, //status
+    ]
+  ]
 
 
   it('addProducers stores producer', async function () {
@@ -143,17 +167,17 @@ contract('Producers', function () {
       producer_example1
     );
 
-    var first_producer = await this.producers_contract.producers(0)
+    var first_producer = await this.producers_contract.producers(1)
     expect(first_producer.personal_information.name).to.equal('Juan');
   });
 
   it('editProducer edits producer', async function () {
     await this.producers_contract.editProducer(
-      0,
+      1,
       producer_example2
     );
 
-    var first_producer = await this.producers_contract.producers(0)
+    var first_producer = await this.producers_contract.producers(1)
     expect(first_producer.personal_information.name).to.equal('Pedro');
   });
 });
