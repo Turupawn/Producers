@@ -11,24 +11,6 @@ const getProducer = async () => {
   document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['personal_information'][0]
 }
 
-const getAddProducerEvents = async () => {
-  document.getElementById("add_producer_events").innerHTML = ""
-  contract.events.AddProducerEvent({}, { fromBlock: 0, toBlock: 'latest' }).on(
-    'data', function(event) {
-    console.log(event);
-    document.getElementById("add_producer_events").innerHTML += JSON.stringify(event)
-  }).on('error', console.error);
-}
-
-const getEditProducerEvents = async () => {
-  document.getElementById("edit_producer_events").innerHTML = ""
-  contract.events.EditProducerEvent({}, { fromBlock: 0, toBlock: 'latest' }).on(
-    'data', function(event) {
-    console.log(event);
-    document.getElementById("edit_producer_events").innerHTML += JSON.stringify(event)
-  }).on('error', console.error);
-}
-
 const getProducerCount = async () => {
   producer_count = await contract.methods
     .producer_count().call()
