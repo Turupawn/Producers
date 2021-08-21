@@ -18,9 +18,9 @@
   <span>FECHA NACIMIENTO: </span><input id="pi_birthday" type=text /><br/>
   <span>GENERO: </span><input id="pi_gender" type=text /><br/>
   <span>ESTADO CIVIL: </span><input id="pi_marital_status" type=text /><br/>
-  <span>NUMERO HIJOS: </span><input id="pi_amount_childs" type=number /><br/>
-  <span>HIJOS HOMBRES: </span><input id="pi_amount_sons" type=number /><br/>
-  <span>HIJOS MUJERES: </span><input id="pi_amount_daugters" type=number /><br/>
+  <span>NUMERO HIJOS: </span><input id="pi_amount_childs" type=number value="0" /><br/>
+  <span>HIJOS HOMBRES: </span><input id="pi_amount_sons" type=number value="0" /><br/>
+  <span>HIJOS MUJERES: </span><input id="pi_amount_daugters" type=number value="0" /><br/>
   <span>CELULAR: </span><input id="pi_cellphone" type=text /><br/>
   <span>EMAIL: </span><input id="pi_email" type=text /><br/>
   <span>BIOGRAFIA: </span><input id="pi_bio" type=text /><br/>
@@ -31,19 +31,19 @@
   <span>ORGANIZACION PERTENECE: </span><input id="fi_belonging_organization" type=text /><br/>
   <span>ORGANIZACION DOMICILIO: </span><input id="fi_organization_address" type=text /><br/>
   <span>UBICACION FINCA: </span><input id="fi_location" type=text /><br/>
-  <span>GEORREFERENCIA X: </span><input id="fi_georeference_x" type=number /><br/>
-  <span>GEORREFERENCIA Y: </span><input id="fi_georeference_y" type=number /><br/>
-  <span>ALTITUD MSNM: </span><input id="fi_msnm_height" type=number /><br/>
+  <span>GEORREFERENCIA X: </span><input id="fi_georeference_x" type=number value="0" /><br/>
+  <span>GEORREFERENCIA Y: </span><input id="fi_georeference_y" type=number value="0" /><br/>
+  <span>ALTITUD MSNM: </span><input id="fi_msnm_height" type=number value="0" /><br/>
 
 
   <h3>FarmArea</h3>
-  <span>AREA TOTAL DE LA FINCA: </span><input id="fa_total" type=number /><br/>
-  <span>AREA CON OTROS CULTIVOS: </span><input id="fa_other_farm" type=number /><br/>
-  <span>AREA DE BOSQUE: </span><input id="fa_forest" type=number /><br/>
-  <span>AREA CULTIVADA DE CACAO: </span><input id="fa_cacao" type=number /><br/>
-  <span>AREA EN PRODUCCION: </span><input id="fa_production" type=number /><br/>
-  <span>AREA EN PLANTILLA: </span><input id="fa_template" type=number /><br/>
-  <span>AREA PROYECTADA: </span><input id="fa_projection" type=number /><br/>
+  <span>AREA TOTAL DE LA FINCA: </span><input id="fa_total" type=number value="0" /><br/>
+  <span>AREA CON OTROS CULTIVOS: </span><input id="fa_other_farm" type=number value="0" /><br/>
+  <span>AREA DE BOSQUE: </span><input id="fa_forest" type=number value="0" /><br/>
+  <span>AREA CULTIVADA DE CACAO: </span><input id="fa_cacao" type=number value="0" /><br/>
+  <span>AREA EN PRODUCCION: </span><input id="fa_production" type=number value="0" /><br/>
+  <span>AREA EN PLANTILLA: </span><input id="fa_template" type=number value="0" /><br/>
+  <span>AREA PROYECTADA: </span><input id="fa_projection" type=number value="0" /><br/>
 
   <h3>Plantation</h3>
   <span>VARIEDAD PLANTADA 1: </span><input id="p_variety_1" type=text /><br/>
@@ -56,17 +56,17 @@
   <span>VARIEDAD PLANTADA 8: </span><input id="p_variety_8" type=text /><br/>
 
   <h3>Farm</h3>
-  <span>MANEJO DE LA FINCA: </span><input id="f_management" type=number /><br/>
-  <span>RENDIMIENTO: </span><input id="f_performance" type=number /><br/>
+  <span>MANEJO DE LA FINCA: </span><input id="f_management" type=number value="0" /><br/>
+  <span>RENDIMIENTO: </span><input id="f_performance" type=number value="0" /><br/>
 
   <h3>CSA</h3>  
-  <span>CSA MADERABLE: </span><input id="csa_timber" type=number /><br/>
+  <span>CSA MADERABLE: </span><input id="csa_timber" type=number value="0" /><br/>
   <span>CSA MADERABLE DESCRIPCION: </span><input id="csa_timber_description" type=text /><br/>
-  <span>CSA FRUTALES: </span><input id="csa_fruit" type=number /><br/>
+  <span>CSA FRUTALES: </span><input id="csa_fruit" type=number value="0" /><br/>
   <span>CSA FRUTALES DESCRIPCION: </span><input id="csa_fruit_description" type=text /><br/>
-  <span>CSA PALMACEAS: </span><input id="csa_palm" type=number /><br/>
+  <span>CSA PALMACEAS: </span><input id="csa_palm" type=number value="0" /><br/>
   <span>CSA PALMACEAS DESCRIPCION: </span><input id="csa_palm_description" type=text /><br/>
-  <span>CSA MUSACEAS: </span><input id="csa_musaceae" type=number /><br/>
+  <span>CSA MUSACEAS: </span><input id="csa_musaceae" type=number value="0" /><br/>
   <span>CSA MUSACEASDESCRIPCION: </span><input id="csa_musaceae_description" type=text /><br/>
 
   <h3>Harvest</h3>
@@ -75,15 +75,15 @@
   <span>FECHA COSECHA 2 INICIO: </span><input id="h_start_2" type=text /><br/>
   <span>FECHA COSECHA 1 FIN: </span><input id="h_end_2" type=text /><br/>
 
-  <span>MAZORCA: </span><input id="h_cob" type=number /><br/>
-  <span>EN BABA: </span><input id="h_slime" type=number /><br/>
-  <span>FERMENTADO Y SECO: </span><input id="h_dry_and_fermented" type=number /><br/>
-  <span>SOLO SECADO: </span><input id="h_dry_only" type=number /><br/>
+  <span>MAZORCA: </span><input id="h_cob" type=number value="0" /><br/>
+  <span>EN BABA: </span><input id="h_slime" type=number value="0" /><br/>
+  <span>FERMENTADO Y SECO: </span><input id="h_dry_and_fermented" type=number value="0" /><br/>
+  <span>SOLO SECADO: </span><input id="h_dry_only" type=number value="0" /><br/>
 
-  <span>VOLUMEN TOTAL DE PRODUCCION POR AÑO: </span><input id="h_total_year_volume" type=number /><br/>
+  <span>VOLUMEN TOTAL DE PRODUCCION POR AÑO: </span><input id="h_total_year_volume" type=number value="0" /><br/>
   <span>PERFIL Y ATRIBUTOS DEL CACAO: </span><input id="h_cacao_atributes_and_profile" type=text /><br/>
   
-  <span>ESTADO: </span><input id="h_status" type=number /><br/>
+  <span>ESTADO: </span><input id="h_status" type=number value="0" /><br/>
 
   <button onclick="addProducer()">Guardar</button>
 
