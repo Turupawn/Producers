@@ -1,32 +1,17 @@
 var contract
 var accounts
 var web3
-var file_buffer
 
 const getProducer = async () => {
   var producer_id = document.getElementById("producer_id").value
   producer_json = await contract.methods
     .producers(producer_id).call()
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
-  //document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['personal_information'][0]
-  //document.getElementById("producer_image").src = producer_json['personal_information'][0]
-}
-
-const getProducerCount = async () => {
-  producer_count = await contract.methods
-    .producer_count().call()
-  document.getElementById("producer_count").innerHTML = "Cantidad de productores: " + producer_count
 }
 
 const addProducer = async () => {
-  //const { cid } = await node.add(file_buffer, { cidVersion: 2 })
-  //console.log('successfully stored image on ipfs', cid)
+  var producer_id = document.getElementById("producer_id").value
 
-  // PersonalInformation
-  //var pi_photo = cid._baseCache.get("z")
-  //console.log(pi_photo)
-  //var pi_photo = document.getElementById("pi_photo").value
-  var pi_photo = ""
   var pi_name = document.getElementById("pi_name").value
   var pi_id_number = document.getElementById("pi_id_number").value
   var pi_rtn = document.getElementById("pi_rtn").value
@@ -95,10 +80,10 @@ const addProducer = async () => {
   var h_total_year_volume = document.getElementById("h_total_year_volume").value
   var h_cacao_atributes_and_profile = document.getElementById("h_cacao_atributes_and_profile").value
   var h_status = document.getElementById("h_status").value
+  var h_other_data = document.getElementById("h_other_data").value
 
   var producer = [
     [ // PersonalInformation
-        pi_photo,
         pi_name,
         pi_id_number,
         pi_rtn,
@@ -169,93 +154,19 @@ const addProducer = async () => {
         h_total_year_volume,
         h_cacao_atributes_and_profile,
 
+        h_other_data,
         h_status,
     ]
   ]
 
-  const result = await contract.methods.addProducer(producer)
+  const result = await contract.methods.setProducer(producer_id, producer)
     .send({ from: accounts[0], gas: 0 })
-    .catch((revertReason) => {
-      getRevertReason(revertReason.receipt.transactionHash);
-    });
-};
-
-const editProducer = async () => {
-  const { cid } = await node.add(file_buffer)
-  console.log('successfully stored image on ipfs', cid)
-  var input_id = document.getElementById("id_edit").value
-  var input_name = document.getElementById("name_edit").value
-  var input_height = document.getElementById("height_edit").value
-  var input_image = cid['string']
-
-  var producer = [
-    accounts[0],
-    [ //PersonalInformation
-      input_image,  //photo
-      input_name,   //name
-      "",           //bio
-      "",           //id_number
-      "",           //gender
-      1,            //birthday_year
-      1,            //birthday_month
-      1,            //birthday_day
-    ],
-    [//Organization
-      "",      //name
-      "",      //org_address
-      "",      //location
-      "",      //farm_name
-      "",      //general_description
-    ],
-    [//Farm
-      1,        //georreference_utm_x
-      1,        //georreference_utm_y
-      input_height,        //height
-      1,        //total_area
-      1,        //other_farm_area
-      1,        //forest_area
-      1,        //cacao_area
-      1,        //production_area
-      1,        //template_area
-      1,        //projection_area
-      "",       //variety1
-      "",       //variety2
-      "",       //variety3
-      "",       //variety4
-      true,     //is_chemical
-      true,     //is_organic
-      "",       //performance
-    ],
-    [//Harvest
-      "",       //start1
-      "",       //end1
-      "",       //start2
-      "",       //end2
-    ],
-    [//ProductionVolume
-      1,       //punds
-      1,       //quintal
-      1,       //fruit
-    ],
-    [//CacaoAgroforestalSystem
-      true,       //has_timber
-      "",         //timber_specs
-      true,       //has_fruit
-      "",         //fruit_specs
-      true,       //has_palm
-      "",         //palm_specs
-      true,       //has_musaceae
-      "",         //musaceae_specs
-    ],
-    [//Beneficiary
-      true,         //is_handcrafter
-      true,         //is_industrial
-    ],
-  ];
-
-
-  const result = await contract.methods.editProducer(input_id, producer)
-    .send({ from: accounts[0], gas: 4000000 })
+    .on('transactionHash', function(hash){
+      console.log("transactionHash: El usuario hizo clic en Confirm, esperando confirmación")
+    })
+    .on('receipt', function(receipt){
+      console.log("receipt: Se han escrito los valores en el lacchain")
+    })
     .catch((revertReason) => {
       getRevertReason(revertReason.receipt.transactionHash);
     });

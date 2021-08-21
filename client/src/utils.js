@@ -101,12 +101,8 @@ async function loadApp() {
           contract = await getContract(web3);
           var awaitAccounts = async function () {
             accounts = await web3.eth.getAccounts()
-            getProducerCount()
             console.log("Web3 loaded")
-
-
-
-            await getRevertReason("0xadb765f94b49121022e713dc42eaa9002dacf0d6b5452f968e4e46942479ceb8")
+            //await getRevertReason("0xadb765f94b49121022e713dc42eaa9002dacf0d6b5452f968e4e46942479ceb8")
           };
           awaitAccounts()
         };

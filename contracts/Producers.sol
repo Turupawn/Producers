@@ -18,7 +18,6 @@ contract Producers is Ownable
   }
 
   struct PersonalInformation {
-    string photo;
     string name;
     string id_number;
     string rtn;
@@ -66,7 +65,7 @@ contract Producers is Ownable
   }
 
   struct Farm {
-    uint256 management;
+    string management;
     uint256 performance;
   }
 
@@ -95,24 +94,18 @@ contract Producers is Ownable
     uint256 total_year_volume;
     string cacao_atributes_and_profile;
 
+    string other_data;
     uint256 status;
   }
 
   /* Public Variables */
-  uint256 public producer_count;
   mapping(uint256 => Producer) public producers;
 
   constructor()
   {
   }
 
-  function addProducer(Producer memory producer) public onlyOwner requiredFields(producer)
-  {
-    producer_count += 1;
-    producers[producer_count] = producer;
-  }
-
-  function editProducer(uint256 id, Producer memory producer) public onlyOwner requiredFields(producer)
+  function setProducer(uint256 id, Producer memory producer) public onlyOwner requiredFields(producer)
   {
     producers[id] = producer;
   }

@@ -8,9 +8,3 @@ const getProducer = async () => {
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
   document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['personal_information'][0]
 }
-
-const getProducerCount = async () => {
-  producer_count = await contract.methods
-    .producer_count().call()
-  document.getElementById("producer_count").innerHTML = "Cantidad de productores: " + producer_count
-}

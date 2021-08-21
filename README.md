@@ -1,6 +1,6 @@
 Honduras agricultural producers database stored on the distributed and transparent LacChain blockchain.
 
-Currently deployed in lacchain at `0xc35E3D108d39D265a484C6ABE961c8ed00659B52`.
+Currently deployed in lacchain at `0x9a95bB720a4bbb101f05593f97D9e001B1B89A57`.
 
 # Compile and Test
 
@@ -12,7 +12,7 @@ npx truffle test
 # Deploy
 
 ```bash
-npx truffle migrate --network lacchain
+npx truffle migrate --network lacchain --reset
 ```
 
 # Console
