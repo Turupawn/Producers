@@ -8,7 +8,8 @@ const getProducer = async () => {
   producer_json = await contract.methods
     .producers(producer_id).call()
   document.getElementById("producer").innerHTML = JSON.stringify(producer_json)
-  document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['personal_information'][0]
+  //document.getElementById("producer_image").src = "https://ipfs.io/ipfs/" + producer_json['personal_information'][0]
+  //document.getElementById("producer_image").src = producer_json['personal_information'][0]
 }
 
 const getProducerCount = async () => {
@@ -18,12 +19,14 @@ const getProducerCount = async () => {
 }
 
 const addProducer = async () => {
-  const { cid } = await node.add(file_buffer, { cidVersion: 2 })
-  console.log('successfully stored image on ipfs', cid)
+  //const { cid } = await node.add(file_buffer, { cidVersion: 2 })
+  //console.log('successfully stored image on ipfs', cid)
 
   // PersonalInformation
-  var pi_photo = cid._baseCache.get("z")
-  console.log(pi_photo)
+  //var pi_photo = cid._baseCache.get("z")
+  //console.log(pi_photo)
+  //var pi_photo = document.getElementById("pi_photo").value
+  var pi_photo = ""
   var pi_name = document.getElementById("pi_name").value
   var pi_id_number = document.getElementById("pi_id_number").value
   var pi_rtn = document.getElementById("pi_rtn").value
